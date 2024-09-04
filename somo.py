@@ -95,6 +95,10 @@ async def reserve_command(interaction: discord.Interaction, date: str, time: str
         await send_error(interaction, "Invalid time. Please choose a time from 17:00, 18:00, or 19:00.")
         return
 
+    if time < "17:00" or time > "19:00":
+        await send_error(interaction, "Invalid time. Please choose a time from 17:00, 18:00, or 19:00.")
+        return
+
     if not is_valid_sport(sport):
         await send_error(interaction, "Invalid sport. Please choose from football, volleyball, handball, and basketball.")
         return
@@ -129,6 +133,10 @@ async def cancel_command(interaction: discord.Interaction, date: str, time: str,
         return
 
     if not is_valid_time(time):
+        await send_error(interaction, "Invalid time. Please choose a time from 17:00, 18:00, or 19:00.")
+        return
+
+    if time < "17:00" or time > "19:00":
         await send_error(interaction, "Invalid time. Please choose a time from 17:00, 18:00, or 19:00.")
         return
 
